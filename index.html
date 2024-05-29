@@ -16,6 +16,15 @@
             <input type="button" id="clear_tasks" value="Clear Tasks">
         </div>
         <div id="task_list"></div>
+
+        <!-- https://www.w3schools.com/howto/howto_css_modals.asp    modal for displaying task details -->
+        <div id="task-details-modal" class="modal">
+            <div class="modal-content">
+                <h2>Task Details</h2>
+                <p id="modal-task-text"></p>
+                <button id="close-modal">Close</button>
+            </div>
+        </div>
     </main>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="task_list.js"></script>
