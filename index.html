@@ -10,19 +10,14 @@
     <main>
         <h1>Task List</h1>
         <div id="tasks">
-            <label for="task list">Task List</label><br>
-            <textarea id="task_list" rows="6" cols="50"></textarea>
-        </div>
             <label for="task">Task</label><br>
-        <div>
-            <input type="text" name="task" id="task">
+            <input type="text" id="task" placeholder="Enter task">
+            <input type="button" id="add_task" value="Add Task"><br>
+            <input type="button" id="clear_tasks" value="Clear Tasks">
         </div>
-            <input type="button" name="add_task" id="add_task" value="Add Task"><br>
-        <div>
-            <input type="button" name="clear_tasks " id="clear_tasks" value="Clear Tasks">
-        </div>
+        <div id="task_list"></div>
     </main>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="task_list.js"></script>
 </body>
 </html>

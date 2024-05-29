@@ -29,7 +29,7 @@ $(document).ready(() => {
     $("#add_task").click(() => {
 
         const task = $("#task").val().trim();  // textbox = $("#task"); const task = textbox.val(); 
-        if (task == "") {                      // https://www.w3schools.com/jquery/jquery_dom_set.asp
+        if (task === "") {                     // https://www.w3schools.com/jquery/jquery_dom_set.asp
             alert("Please enter a task.");
             $("#task").focus();                // textbox.focus(); 
             return;
@@ -44,10 +44,12 @@ $(document).ready(() => {
 
     $("#clear_tasks").click(() => {
         deleteCookie("tasks");
-        $("#task_list").val("");
-        $("#task").focus();
+        displayTasks();
+        // $("#task_list").val("");
+        // $("#task").focus();
     });
 
+    // https://www.w3schools.com/jquery/jquery_traversing_ancestors.asp
     $("#task_list").on("change", "input[type='checkbox']", function() {
         const taskIndex = $(this).parent().index(); // Get index of the task in the list
         const tasks = getCookieByName("tasks").split("\n"); // Get tasks from cookie
@@ -65,15 +67,19 @@ function displayTasks() {
     const tasks = getCookieByName("tasks");
     if (tasks) {
         const tasksArray = tasks.split("\n");
-        $("#task_list").empty(); // this clears previous tasks
+        const taskList = $("#task_list");
+        taskList.empty(); // this clears previous tasks
         tasksArray.forEach(task => {
-            const taskElement = $("<div>").text(task.substring(1)); // this removes check box character
+            const taskElement = $("<div>"); // .text(task.substring(1)); // this removes check box character
             const checkbox = $("<input>").attr("type", "checkbox");
-            if (task.startsWith("✔")) // const checkMark = "\u2714";
-            checkbox.prop("checked", true); // Check the checkbox if task is completed
-            taskElement.addClass("completed"); // Add completed class to the task
-            taskElement.prepend(checkbox);
-            $("#task_list").append(taskElement);  // https://www.w3schools.com/jquery/html_append.asp
+            if (task.startsWith("✔")) { // const checkMark = "\u2714";
+                checkbox.prop("checked", true); // Check the checkbox if task is completed
+                taskElement.addClass("completed"); // Add completed class to the task
+                task = task.substring(1);
+            }
+            taskElement.append(checkbox);
+            taskElement.append(task);
+            taskList.append(taskElement);  // https://www.w3schools.com/jquery/html_append.asp
         });
     }
 }

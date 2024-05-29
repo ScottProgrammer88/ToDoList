@@ -1,9 +1,8 @@
 #tasks {
     margin-top: 0;
-    float: right;
+    float: center;
 }
 .completed {
+    margin-top: 5px;
     text-decoration: line-through;
 }
-
-
