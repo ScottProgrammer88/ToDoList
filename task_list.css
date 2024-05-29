@@ -1,0 +1,9 @@
+#tasks {
+    margin-top: 0;
+    float: right;
+}
+.completed {
+    text-decoration: line-through;
+}
+
+
